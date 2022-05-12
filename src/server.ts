@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import config from '../config.json';
 import { getFilesWithKeyword } from './utils/getFilesWithKeyword';
+import path from "path";
 
 const app: Express = express();
 
@@ -32,11 +33,12 @@ if (process.env.NODE_ENV === 'production' || config.NODE_ENV === 'production') {
 
 getFilesWithKeyword('router', __dirname + '/app').forEach((file: string) => {
   const { router } = require(file);
-  app.use('/', router);
+  app.use('/api', router);
 })
 /************************************************************************************
  *                               Express Error Handling
  ***********************************************************************************/
+
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -46,5 +48,8 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
     stack: err.stack || 'no stack defined'
   });
 });
+
+app.use( express.static(path.join(__dirname, 'public')))
+
 
 export default app;
