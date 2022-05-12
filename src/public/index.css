@@ -1,0 +1,44 @@
+html, 
+body {
+    height: 100%;
+}
+
+.draggable {
+    width: 3em;
+    height: 3em;
+    background-color: #29e;
+    color: white;
+    border-radius: 50%;
+    touch-action: none;
+    user-select: none;
+  }
+.flex-container{
+    height: 100%;
+    flex-direction: column;
+}
+
+.center-txt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.elem1{
+    flex-grow: 1fr;
+    height: 80vh ;
+    margin:30px
+
+}
+.elem2{
+    height: 20vh ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.bg{
+    background-color: rgb(134, 191, 232);
+    
+}
